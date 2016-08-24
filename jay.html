@@ -1,0 +1,63 @@
+    <html ng-app>
+        <head>
+         <title>Post Comments</title>   
+            <link rel="stylesheet" href="bootstrap.css">
+            <script type="text/javascript" src="angular.min.js"></script>
+            <script type="text/javascript" src="bootstrap.min.js"></script>
+        </head>
+        <body>
+            <div id='div1' style="padding:10px">
+                <form ng-controller="Cntrlr1">
+
+                    <form ng-controller="Cntrlr1">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+               Post Your Question
+                <textarea ng-model="textQuestion" placeholder="Your Question"></textarea>
+    <button ng-click='button_addQ();' class="btn btn-success">Post</button><br><br>
+                    </div>
+                    <div class="panel-footer">
+    Comment:
+                        <textarea ng-model="textcomment" placeholder="Your Comment"></textarea>
+                        <button ng-click='button_add();' >Post Comment</button>
+                 <ul>
+    <h4>Question</h4>
+                            <li ng-repeat="Question in Questions"> {{ Question}} <hr />
+
+                        <h4>Comments</h4>
+                        <ul>
+                            <li ng-repeat="comment in comments"> {{ comment }} <hr /></li>
+                        </ul>
+    </li>
+    </ul>
+                    </div>
+                    </div>
+                    </form>
+                    </form> 
+            </div>
+
+
+            <script type="text/javascript">
+                function Cntrlr1($scope) {
+                   $scope.comments = [];
+     $scope.Questions = [];
+                    $scope.button_add = function() {
+                        if($scope.textcomment !=''){
+                        $scope.comments.push($scope.textcomment);
+                        $scope.textcomment = "";
+                        }
+                    }
+                   $scope.button_addQ = function() {
+
+                        if($scope.textQuestion !=''){
+                        $scope.Questions.push($scope.textQuestion);
+                        $scope.textQuestion = "";
+
+                }
+                    }
+
+
+                }
+            </script>
+        </body>
+    </html>
